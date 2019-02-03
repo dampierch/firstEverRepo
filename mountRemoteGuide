@@ -1,1 +1,4 @@
 https://susanqq.github.io/jekyll/pixyll/2017/09/05/remotefiles/
+
+sudo sshfs -o allow_other,defer_permissions username@rivanna.hpc.virginia.edu:/sfs/qumulo/qhome/chd5n/ /Volumes/rivHome/
+sudo sshfs -o allow_other,defer_permissions username@rivanna.hpc.virginia.edu:/sfs/lustre/scratch/chd5n /Volumes/rivScratch/
