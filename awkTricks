@@ -1,0 +1,18 @@
+
+head -1 <filename> | wc -w
+for i in {1..#}; do printf "\$${i},"; done | pbcopy
+head -1 <filename> | awk '{OFS="\n"} {print $1,$2,...,$#}' | awk '{print NR,$1}' | less
+awk '{FS="\t"} {print $6}' <filename> | sort | uniq -c > <ofn>
+
+285 cram samples
+210 sra samples
+293 uniq cases
+091 independent :: sra OR cram
+202 duplicates :: sra AND cram
+
+what are the 091 independents?
+> 08 sra
+> 83 cram
+
+awk 'NR==FNR {a[$1]; next} {for (i in a) if ($2==i) print $2,"cram"}' GtexIndepBioSamps.txt GtexCramBioSamps.txt > GtexIndCramSamps.txt
+awk 'NR==FNR {a[$1]; next} {for (i in a) if ($2==i) print $2,"sra"}' GtexIndepBioSamps.txt GtexSraBioSamps.txt > GtexIndSraSamps.txt
